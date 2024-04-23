@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゴミパチ(止まったら更新,1/99であたり)</title>
+    <style>
+        #pachinko-container {
+            width: 400px;
+            height: 600px;
+            border: 1px solid black;
+            position: relative;
+            overflow: hidden;
+        }
+        .ball {
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .nail {
+            width: 8px;
+            height: 8px;
+            background-color: #333;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .wall {
+            width: 10px;
+            height: 600px;
+            background-color: blue;
+            position: absolute;
+        }
+        #left-wall {
+            left: 0;
+        }
+        #right-wall {
+            right: 0;
+        }
+        #goal-pocket {
+            width: 60px;
+            height: 30px;
+            background-color: green;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            clip-path: polygon(0% 100%, 25% 0%, 75% 0%, 100% 100%);
+        }
+    </style>
+</head>
+<body>
+    <div id="pachinko-container">
+        <!-- 左右の壁を追加 -->
+        <div id="left-wall" class="wall"></div>
+        <div id="right-wall" class="wall"></div>
+        <!-- 釘を大量に追加 -->
+       <div class="nail" style="left: 20px; top: 100px;"></div>
+        <div class="nail" style="left: 70px; top: 150px;"></div>
+        <div class="nail" style="left: 120px; top: 100px;"></div>
+        <div class="nail" style="left: 170px; top: 150px;"></div>
+        <div class="nail" style="left: 220px; top: 100px;"></div>
+        <div class="nail" style="left: 270px; top: 150px;"></div>
+        <div class="nail" style="left: 320px; top: 100px;"></div>
+
+        <div class="nail" style="left: 40px; top: 100px;"></div>
+        <div class="nail" style="left: 90px; top: 150px;"></div>
+        <div class="nail" style="left: 140px; top: 100px;"></div>
+        <div class="nail" style="left: 190px; top: 150px;"></div>
+        <div class="nail" style="left: 240px; top: 100px;"></div>
+        <div class="nail" style="left: 300px; top: 150px;"></div>
+        <div class="nail" style="left: 340px; top: 100px;"></div>
+
+        <div class="nail" style="left: 20px; top: 200px;"></div>
+        <div class="nail" style="left: 70px; top: 250px;"></div>
+        <div class="nail" style="left: 120px; top: 200px;"></div>
+        <div class="nail" style="left: 170px; top: 250px;"></div>
+        <div class="nail" style="left: 220px; top: 200px;"></div>
+        <div class="nail" style="left: 270px; top: 250px;"></div>
+        <div class="nail" style="left: 320px; top: 200px;"></div>
+
+        <div class="nail" style="left: 50px; top: 200px;"></div>
+        <div class="nail" style="left: 100px; top: 250px;"></div>
+        <div class="nail" style="left: 150px; top: 200px;"></div>
+        <div class="nail" style="left: 200px; top: 250px;"></div>
+        <div class="nail" style="left: 250px; top: 200px;"></div>
+        <div class="nail" style="left: 300px; top: 250px;"></div>
+        <div class="nail" style="left: 350px; top: 200px;"></div>
+
+
+
+        <div class="nail" style="left: 20px; top: 300px;"></div>
+        <div class="nail" style="left: 70px; top: 350px;"></div>
+        <div class="nail" style="left: 120px; top: 300px;"></div>
+        <div class="nail" style="left: 170px; top: 350px;"></div>
+        <div class="nail" style="left: 220px; top: 300px;"></div>
+        <div class="nail" style="left: 270px; top: 350px;"></div>
+        <div class="nail" style="left: 320px; top: 300px;"></div>
+        
+        <div class="nail" style="left: 130px; top: 430px;"></div>
+        <div class="nail" style="left: 250px; top: 430px;"></div>
+        <div class="nail" style="left: 120px; top: 450px;"></div>
+        <div class="nail" style="left: 260px; top: 450px;"></div>
+        <div class="nail" style="left: 110px; top: 500px;"></div>
+        <div class="nail" style="left: 270px; top: 500px;"></div>
+        <div class="nail" style="left: 105px; top: 520px;"></div>
+        <div class="nail" style="left: 275px; top: 520px;"></div>
+        <div class="nail" style="left: 125px; top: 530px;"></div>
+        <div class="nail" style="left: 245px; top: 530px;"></div>
+
+
+
+
+
+
+
+
+        <div class="nail" style="left: 170px; top: 500px;"></div>
+        <div class="nail" style="left: 220px; top: 500px;"></div>
+        <div class="nail" style="left: 170px; top: 510px;"></div>
+        <div class="nail" style="left: 220px; top: 510px;"></div>
+        <div class="nail" style="left: 170px; top: 530px;"></div>
+        <div class="nail" style="left: 220px; top: 530px;"></div>
+        <div class="nail" style="left: 170px; top: 550px;"></div>
+        <div class="nail" style="left: 220px; top: 550px;"></div>
+        <div class="nail" style="left: 170px; top: 570px;"></div>
+        <div class="nail" style="left: 220px; top: 570px;"></div>
+        <div class="nail" style="left: 170px; top: 590px;"></div>
+        <div class="nail" style="left: 220px; top: 590px;"></div>
+
+
+        <div class="nail" style="left: 150px; top: 550px;"></div>
+        <div class="nail" style="left: 240px; top: 550px;"></div>
+
+
+        <div class="nail" style="left: 150px; top: 570px;"></div>
+        <div class="nail" style="left: 240px; top: 570px;"></div>
+        <div class="nail" style="left: 150px; top: 590px;"></div>
+        <div class="nail" style="left: 240px; top: 590px;"></div>
+
+        
+
+
+        <!-- ゴールポケットを追加 -->
+        <div id="goal-pocket"></div>
+    </div>
+    
+    <script>
+        const container = document.getElementById('pachinko-container');
+        const nails = document.querySelectorAll('.nail');
+        const balls = [];
+        const goalPocket = document.getElementById('goal-pocket');
+        let ballsToShoot = 5; // 一度に発射するボールの数
+
+        // ボールを作成する関数
+        function createBall() {
+            const ball = document.createElement('div');
+            ball.className = 'ball';
+            container.appendChild(ball);
+            return ball;
+        }
+
+        // ボールを落とす関数
+        function dropBall(ball) {
+            let x = Math.random() * (container.offsetWidth - ball.offsetWidth);
+            let y = 0;
+            let speedX = 3 * (Math.random() > 0.5 ? 1 : -1); // ボールの水平速度
+            let speedY = 5; // ボールの垂直速度
+            ball.style.left = x + 'px';
+            let interval = setInterval(function() {
+                y += speedY;
+                x += speedX;
+                ball.style.top = y + 'px';
+                ball.style.left = x + 'px';
+                // 壁との当たり判定
+                if (x <= 0 || x >= container.offsetWidth - ball.offsetWidth) {
+                    speedX = -speedX; // 壁に当たったら速度を反転
+                }
+                if (y >= container.offsetHeight - ball.offsetHeight) {
+                    clearInterval(interval);
+                    ball.remove();
+                    balls.splice(balls.indexOf(ball), 1);
+                    // ボールが画面外に出たら次のボールを発射
+                    ballsToShoot--;
+                    if (ballsToShoot === 0) {
+                        ballsToShoot = 5; // 次の5個を発射する
+                        setTimeout(function() {
+                            shootBalls();
+                        }, 1000);
+                    }
+                }
+                // 釘との当たり判定
+                nails.forEach(nail => {
+                    if (checkCollision(ball, nail)) {
+                        // 釘に当たったら速度をランダムに変更
+                        speedX = 3 * (Math.random() > 0.5 ? 1 : -1);
+                    }
+                });
+                // ゴールポケットとの当たり判定
+                if (checkCollision(ball, goalPocket)) {
+                    clearInterval(interval);
+                    ball.remove();
+                    balls.splice(balls.indexOf(ball), 1);
+                    // ゴールに当たったら1/99の確率で「あたり」と表示
+                    if (Math.random() < 1 / 99) {
+                        alert("あたり！");
+                    } else {
+                        alert("はずれ");
+                    }
+                }
+            }, 10);
+        }
+
+        // 当たり判定
+        function checkCollision(ball, element) {
+            let ballRect = ball.getBoundingClientRect();
+            let elementRect = element.getBoundingClientRect();
+            return !(ballRect.right < elementRect.left || 
+                     ballRect.left > elementRect.right || 
+                     ballRect.bottom < elementRect.top || 
+                     ballRect.top > elementRect.bottom);
+        }
+
+        // ボールを発射する関数
+        function shootBalls() {
+            for (let i = 0; i < 5; i++) {
+                const ball = createBall();
+                balls.push(ball);
+                dropBall(ball);
+            }
+        }
+
+        // 初期化：最初の5個のボールを発射
+        shootBalls();
+    </script>
+</body>
+</html>
