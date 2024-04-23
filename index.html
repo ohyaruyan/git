@@ -166,7 +166,7 @@
             let x = Math.random() * (container.offsetWidth - ball.offsetWidth);
             let y = 0;
             let speedX = 3 * (Math.random() > 0.5 ? 1 : -1); // ボールの水平速度
-            let speedY = 3; // ボールの垂直速度
+            let speedY = 5; // ボールの垂直速度
             ball.style.left = x + 'px';
             let interval = setInterval(function() {
                 y += speedY;
@@ -183,7 +183,7 @@
                     balls.splice(balls.indexOf(ball), 1);
                     // ボールが画面外に出たら次のボールを発射
                     ballsToShoot--;
-                    if (ballsToShoot ===< 5) {
+                    if (ballsToShoot === 0) {
                         ballsToShoot = 5; // 次の5個を発射する
                         setTimeout(function() {
                             shootBalls();
