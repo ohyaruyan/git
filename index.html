@@ -204,9 +204,9 @@
                     balls.splice(balls.indexOf(ball), 1);
                     // ゴールに当たったら1/99の確率で「あたり」と表示
                     if (Math.random() < 1 / 99) {
-                        print("あたり！");
+                        textContent("あたり！");
                     } else {
-                        print("はずれ");
+                        textContent("はずれ");
                     }
                 }
             }, 10);
